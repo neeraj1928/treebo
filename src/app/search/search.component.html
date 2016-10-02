@@ -1,0 +1,55 @@
+
+  <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required #mySearch (keyup)="search(mySearch.value)">
+          <label for="search">
+            <i class="material-icons">search</i>
+          </label>
+          <i class="material-icons" (click)="closeSearch()">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+<div *ngIf="results">
+  <div class="card-panel row" *ngFor="let deal of results">
+    <h5>
+      <i class="material-icons left">keyboard_arrow_right</i>
+      {{deal[1]}}
+    </h5>
+    <h6 class="grey-text truncate">
+      <i class="material-icons left">location_on</i>
+      {{deal[7]}}
+    </h6>
+    <div class="col s4 m3 l2">
+      <img class="responsive-img"
+        [src]="deal[2]">
+    </div>
+    <div class="col s8 m9 l10">
+      <p class="float-text">
+        Ratings: {{deal[3]}}
+      </p>
+      <p class="truncate">
+        <i class="material-icons left">link</i>
+        Link:
+        <a target="_blank" [href]="deal[4]">{{deal[4]}}</a>
+      </p>
+      <p>
+        <del>Actual Price: &#x20b9;{{deal[5]}}</del>
+      </p>
+      <p>
+        <i class="material-icons left">loyalty</i>
+        Final Price: {{deal[5]*(1-deal[6]/100) | currency:'INR':true:'1.2-2'}}
+      </p>
+      <p>
+        <span class="left">{{deal[6]}}% off</span>
+        <span class="right" (click)="thumbClicked(deal[0])">
+          <i class="material-icons left blue-text">thumb_up</i>
+          {{likes[deal[0]]}}
+        </span>
+      </p>
+    </div>
+  </div>
+</div>

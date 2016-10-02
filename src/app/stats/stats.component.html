@@ -1,0 +1,41 @@
+<div class="row">
+  <div *ngIf="stats" class="col s12 center-align">
+    <h5 class="card-panel">
+      <i class="material-icons">trending_up</i>
+      Statistics
+    </h5>
+    <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header">
+          Numbers
+        </div>
+        <div class="collapsible-body">
+          <p>Api Hits: {{stats["api-hits"]}}</p>
+          <p>Average Rating: {{stats["average-rating"]}}</p>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">
+          Price Range
+        </div>
+        <div class="collapsible-body">
+          <p>Maximum Price: &#x20b9;{{stats.price.Maximum}}</p>
+          <p>Minimum Price: &#x20b9;{{stats.price.Minimum}}</p>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons"></i>
+          Locations
+        </div>
+        <div class="collapsible-body">
+          <p>Mumbai: {{stats["area-wise-hotel-distribution"]["MUM"]}}</p>
+          <p>Delhi / NCR: {{stats["area-wise-hotel-distribution"]["DEL"]}}</p>
+          <p>Hyderabad: {{stats["area-wise-hotel-distribution"]["HYD"]}}</p>
+          <p>Chennai: {{stats["area-wise-hotel-distribution"]["CHE"]}}</p>
+          <p>Bengaluru: {{stats["area-wise-hotel-distribution"]["BLR"]}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col s12 m4 l3 right">
+    <app-stats></app-stats>
+  </div>
+  <div class="col s12 m8 l9" *ngIf="deals">
+    <ul class="pagination">
+    <li (click)="paginationClicked(-1)">
+      <a>
+        <i class="material-icons">chevron_left</i>
+      </a>
+    </li>
+    <li [ngClass]="paginationClass(1)" (click)="paginationClicked(1)"><a >1</a></li>
+    <li [ngClass]="paginationClass(2)" (click)="paginationClicked(2)"><a >2</a></li>
+    <li [ngClass]="paginationClass(3)" (click)="paginationClicked(3)"><a >3</a></li>
+    <li class="waves-effect" (click)="paginationClicked(-2)">
+      <a >
+        <i class="material-icons">chevron_right</i>
+      </a>
+    </li>
+    </ul>
+    <div class="card-panel row" *ngFor="let deal of deals">
+      <h5>
+        <i class="material-icons left">keyboard_arrow_right</i>
+        {{deal[1]}}
+      </h5>
+      <h6 class="grey-text truncate">
+        <i class="material-icons left">location_on</i>
+        {{deal[7]}}
+      </h6>
+      <div class="col s4 m3 l2">
+        <img class="responsive-img"
+          [src]="deal[2]">
+      </div>
+      <div class="col s8 m9 l10">
+        <p class="float-text">
+          Ratings: {{deal[3]}}
+        </p>
+        <p class="truncate">
+          <i class="material-icons left">link</i>
+          Link:
+          <a target="_blank" [href]="deal[4]">{{deal[4]}}</a>
+        </p>
+        <p>
+          <del>Actual Price: &#x20b9;{{deal[5]}}</del>
+        </p>
+        <p>
+          <i class="material-icons left">loyalty</i>
+          Final Price: {{deal[5]*(1-deal[6]/100) | currency:'INR':true:'1.2-2'}}
+        </p>
+        <p>
+          <span class="left">{{deal[6]}}% off</span>
+          <span class="right" (click)="thumbClicked(deal[0])">
+            <i class="material-icons left blue-text">thumb_up</i>
+            {{likes[deal[0]]}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
