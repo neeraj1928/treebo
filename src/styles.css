@@ -1,8 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/materialize-css/dist/css/materialize.css";
-
-.logo-img {
-  height: 32px;
-  width: 32px;
-  margin: 16px 16px 0px 16px;
-}
